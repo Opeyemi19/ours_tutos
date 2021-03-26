@@ -44,11 +44,11 @@
 
 ########################################## Variable Parametre Saisie ########################
 
-    # $# : Nombre de paramètres
-    # $0 : Exécutable
-    # $1 à $9 : paramètres 1 à 9 
-    # ${X} : paramètre X
-    # $$,$#, $*, $@
+    # $# : Nombre de paramètres saisies
+    # $0 : fichier en Exécutable. Ex: Ici c'est le main.sh
+    # $1 à $9 : paramètres 1 à 9 #Il va retourner les parametres entrées en fonction de la variable que nous avons mis. Ex: ./main.sh sodik Ope YES rik nick ==> $3(Retourne les Trois premiers paramètres entrées)
+    # ${X} : paramètre X #Retournera les parametres entrée à partir de 10 parametres car l'autre s termine à 9.
+    # $$(Retoune un ID du Processeur à chaque execution),$#, $*(Retourne tous les elements mais sous la forme de chaîne de caracteres), $@(Va gerer autant de chaîne qu'il y a d'indiquer précisement)
 
     # echo "$1 ------ $2"
     # echo ${5}
