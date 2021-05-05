@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  common = <<-SHELL
+  sudo apt update -qq 2>&1 > /dev/null
+  curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+  sudo apt install terraform
+  sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /etc/ssh/sshd_config
+  sudo systemctl restart sshd
+  SHELL
+  
+    config.vm.box = "hashicorp/bionic64"
+      
+    config.vm.hostname = "terraformtest"
+  
+    # config.vm.network "private_network", ip: "10.1.1.50"
+    config.vm.network "private_network", ip: "192.168.50.50"
+  
+    config.vm.provision :shell, :inline => common
+
+end
