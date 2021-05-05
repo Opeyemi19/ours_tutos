@@ -1,0 +1,33 @@
+#   This configuration is for {{ ansible_facts['nodename'] }}
+
+
+    upstream webservers {
+        
+        #Faire une Boucle le nobre de Server Definie dans le Groupe de Server (webservers)
+        
+        # Le (hostvars) le Nom de la machine hôte
+
+        {% for hos in groups['webservers'] %}
+            server {{ hostvars[hos]['ansible_facts']['nodename'] }}:{{ http_port }};
+        {% endfor %}
+
+        #server {{ hostvars['web01']['ansible_facts']['nodename'] }}:8000;
+        #server {{ hostvars['web02']['ansible_facts']['nodename'] }}:8000;
+
+        #server web01:8000;
+        #server web02:8000;
+
+        #server 192.168.65.103:8000;  
+        #server 192.168.65.104:8000;
+
+    }
+
+
+
+    server {
+        listen 80;
+
+        location / {   
+                proxy_pass http://webservers;
+        }
+    }

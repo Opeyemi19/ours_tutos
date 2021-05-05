@@ -1,0 +1,24 @@
+[control]
+ansible-control
+
+
+[proxy]
+loadbalancer
+
+
+[webservers]
+web01
+web02
+
+
+[database]
+db01
+
+
+# Il s'agit de faire ici un Groupe de Groupe c-t-d quand le Grand-Groupe sera solliciter alors il fera appel aux enfants du sous-groupe(les Servers du Sous-Groupes) definie dans notre Grand-Groupe
+
+[webstack:children]
+proxy
+webservers
+database
+
