@@ -1,0 +1,103 @@
+version: "3.8"
+services:
+    elasticsearch:
+        build:
+            context: elasticsearch/
+            args:
+                ELK_VERSION: $ELK_VERSION
+        volumes:
+            - type: bind
+              source: ./elasticsearch/config/elasticsearch.yml
+              target: /usr/share/elasticsearch/config/elasticsearch.yml
+              read_only: true
+            - elasticsearch_data:/usr/share/elasticsearch/data        
+        ports:
+            - "9200:9200" # You are the possibility to change port Externe
+            - "9300:9300"
+        environment:
+            ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+            ELASTIC_PASSWORD: changepassword
+            discovery.type: single-node
+        networks:
+            - elk
+
+    kibana:
+        build:
+            context: kibana/
+            args:
+              ELK_VERSION: $ELK_VERSION
+        volumes:
+            - type: bind
+              source: ./kibana/config/kibana.yml
+              target: /usr/share/kibana/config/kibana.yml
+              read_only: true
+        ports:
+            - "5601:5601" # You are the possibility to change port Externe
+        networks:
+            - elk
+        depends_on:
+            - elasticsearch
+
+    filebeat:
+        build:
+            context: filebeat/
+            args:
+              ELK_VERSION: $ELK_VERSION
+        user: root
+        command: ["--strict.perms=false"]
+        volumes:
+            - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+            - /var/lib/docker:/var/lib/docker:ro
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - elk
+        depends_on: 
+            - elasticsearch
+            - kibana
+
+    metricbeat:
+        image: docker.elastic.co/beats/metricbeat:$ELK_VERSION
+        container_name: metricbeat
+        user: root
+        command: --strict.perms=false -e  # -e flag to log to stderr and disable syslog/file output
+        volumes:
+            #Mount the metricbeat configuration so users can make edits.
+            - ./metricbeat/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
+            #Mount the modules.d directory into the container. This allows user to potentially make changes to the modules and they will be dynamically loaded.
+            - ./metricbeat/modules.d/:/usr/share/metricbeat/modules.d/
+            #The commented sections below enable Metricbeat to monitor the Docker host rather than the Metricbeat container. These are used by the system module.
+            - /proc:/hostfs/proc:ro
+            - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+            #Allows us to report on docker from the hosts information.
+            - /var/run/docker.sock:/var/run/docker.sock
+            #We mount the host filesystem so we can report on disk usage with the system module.
+            - /:/hostfs:ro
+        networks: ['elk']
+        depends_on: ['elasticsearch', 'kibana']
+
+
+    curator:
+        build:
+            context: curator/
+        init: true
+        volumes:
+            - type: bind
+              source: ./curator/config/curator.yml
+              target: /usr/share/curator/config/curator.yml
+              read_only: true
+            - type: bind
+              source: ./curator/config/delete_log_files_curator.yml
+              target: /usr/share/curator/config/delete_log_files_curator.yml
+              read_only: true
+        networks:
+            - elk
+        depends_on:
+            - elasticsearch
+
+
+networks:
+  elk:
+    driver: bridge
+
+volumes:
+    elasticsearch_data:
