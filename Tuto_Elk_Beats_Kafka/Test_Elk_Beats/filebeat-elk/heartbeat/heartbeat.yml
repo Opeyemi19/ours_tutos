@@ -1,0 +1,53 @@
+heartbeat.monitors:
+
+#Monitor all containers using an icmp ping
+- type: icmp
+  schedule: '*/5 * * * * * *'
+  hosts: ["auditbeat","filebeat","metricbeat","packetbeat","elasticsearch","kibana","nodeapp","nginx-proxy"]
+  ipv4: true
+  ipv6: true
+  mode: any
+  timeout: 3s
+  wait: 1s
+
+- type: http
+  schedule: '@every 5s'
+  urls:
+    - http://elasticsearch:9200
+    - http://kibana:5601
+  ipv4: true
+  ipv6: true
+  mode: any
+  timeout: 3s
+  username: elastic
+  password: changepassword
+  check.request:
+    method: "GET"
+  check.response:
+    status: 200
+
+- type: icmp
+  schedule: '@every 5s'
+  hosts:
+    - elasticsearch
+    - kibana
+
+processors:
+- add_cloud_metadata: ~
+
+output.elasticsearch:
+  hosts: ['elasticsearch:9200']
+  username: elastic
+  password: changepassword
+
+
+setup.kibana:
+  host: "http://kibana:5601"
+  username: elastic
+  password: changepassword
+  dashboards.enabled: true
+
+
+monitoring.enabled: true
+
+logging.to_files: false

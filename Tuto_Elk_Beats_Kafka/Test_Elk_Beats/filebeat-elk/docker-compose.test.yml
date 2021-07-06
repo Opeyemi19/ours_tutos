@@ -75,6 +75,71 @@ services:
         networks: ['elk']
         depends_on: ['elasticsearch', 'kibana']
 
+        packetbeat:
+        image: docker.elastic.co/beats/packetbeat:$ELK_VERSION
+        container_name: packetbeat
+        cap_add: ['NET_RAW', 'NET_ADMIN']
+        command: --strict.perms=false -e
+        volumes:
+            - ./packetbeat/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml
+        depends_on: ['elasticsearch', 'kibana']
+        healthcheck:
+            test: packetbeat test config
+            interval: 30s
+            timeout: 15s
+            retries: 5
+        networks:
+            - elk
+    
+    packetbeat:
+        image: docker.elastic.co/beats/packetbeat:$ELK_VERSION
+        container_name: packetbeat
+        cap_add: ['NET_RAW', 'NET_ADMIN']
+        command: --strict.perms=false -e
+        volumes:
+            - ./packetbeat/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml
+        depends_on: ['elasticsearch', 'kibana']
+        healthcheck:
+            test: packetbeat test config
+            interval: 30s
+            timeout: 15s
+            retries: 5
+        networks:
+            - elk
+
+
+    auditbeat:
+        image: docker.elastic.co/beats/auditbeat:$ELK_VERSION
+        container_name: auditbeat
+        user: root
+        pid: host
+        cap_add: ['AUDIT_CONTROL', 'AUDIT_READ']
+        command: --strict.perms=false -e
+        volumes:
+            - ./auditbeat/auditbeat.yml:/usr/share/auditbeat/auditbeat.yml
+            - /var/log:/var/log:ro
+        depends_on: ['elasticsearch', 'kibana']
+        healthcheck:
+            test: auditbeat test config
+            interval: 30s
+            timeout: 15s
+            retries: 5
+        networks: ['elk']
+
+    
+    heartbeat:
+        image: docker.elastic.co/beats/heartbeat:$ELK_VERSION
+        container_name: heartbeat
+        command: --strict.perms=false -e
+        volumes:
+            - ./heartbeat/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml
+        networks: ['elk']
+        depends_on: ['elasticsearch', 'kibana']
+        healthcheck:
+            test: heartbeat test config
+            interval: 30s
+            timeout: 15s
+            retries: 5
 
     curator:
         build:
