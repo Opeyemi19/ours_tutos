@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'Alert sur le Server Grafana-Test-2'
+
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - "alert.rules"
+
+
+scrape_configs:
+  - job_name: monitoring
+    # metrics_path: /metrics
+    static_configs:
+      - targets:
+        - app1:8000
+        - app2:8001
+
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: 
+        - nodeexporter:9100
+        - cadvisor:8080
+        - prometheus:9090
+        - pushgateway:9091
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - 'alertmanager:9093'

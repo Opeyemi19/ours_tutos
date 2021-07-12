@@ -1,0 +1,11 @@
+route:
+  receiver: 'slack'
+
+receivers:
+  - name: 'slack'
+    slack_configs:
+      - send_resolved: true
+        text: "{{ .CommonAnnotations.description }}"
+        username: 'Sodik'
+        channel: '#prometheus'
+        api_url: 'https://hooks.slack.com/services/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'
