@@ -23,13 +23,6 @@ services:
     networks:
       - monitor-net
 
-  # prometheus:
-  #   image: prom/prometheus
-  #   volumes:
-  #     - ./prometheus/:/etc/prometheus/
-  #   ports:
-  #     - "9090:9090"
-
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -91,7 +84,6 @@ services:
 
   cadvisor:
     image: google/cadvisor
-    # image: gcr.io/cadvisor/cadvisor
     container_name: cadvisor
     volumes:
       - /:/rootfs:ro
@@ -99,7 +91,6 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
-      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
     restart: unless-stopped
     ports:
       - 8080:8080
@@ -113,8 +104,6 @@ services:
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
-      # - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
-      # - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=mypassword

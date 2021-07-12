@@ -14,7 +14,7 @@ receivers:
       - send_resolved: true
         username: 'Sodik'
         channel: '#prometheus'
-        api_url: 'https://hooks.slack.com/services/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'
+        api_url: ''
         # text: "{{ .CommonAnnotations.description }}"
         
         icon_url: https://avatars3.githubusercontent.com/u/3380462
