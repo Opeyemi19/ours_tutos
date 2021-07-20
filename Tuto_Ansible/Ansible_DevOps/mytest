@@ -1,0 +1,6 @@
+[control]
+ansible-admin
+
+[webservers]
+web-app-01
+web-app-02
