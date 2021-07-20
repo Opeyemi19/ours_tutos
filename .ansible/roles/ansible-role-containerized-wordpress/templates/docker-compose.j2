@@ -1,0 +1,46 @@
+version: '2.1'
+
+services:
+
+  wordpress:
+    depends_on:
+      db:
+        condition: service_healthy
+    # ToDo: implement option of using different version
+    image: wordpress:{{ wp_version }}-apache
+    container_name: wp
+    volumes:
+#      - ./wordpress:/var/www/html
+      - ./wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_USER: '{{ wp_db_user }}'
+      WORDPRESS_DB_NAME: '{{ wp_db_name }}'
+      WORDPRESS_DB_PASSWORD: '{{ wp_db_psw }}'
+      WORDPRESS_DB_HOST: 'db'
+      MYSQL_PORT_3306_TCP: '3306'
+    restart: unless-stopped
+    networks:
+      - wp
+    ports:
+      - '80:80'
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password='{{ wp_db_psw }}' --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
+    environment:
+      MYSQL_ROOT_PASSWORD: '{{ db_root_psw }}'
+      MYSQL_DATABASE: '{{ wp_db_name }}'
+      MYSQL_USER: '{{ wp_db_user }}'
+      MYSQL_PASSWORD: '{{ wp_db_psw }}'
+    restart: unless-stopped
+    networks:
+      - wp
+
+networks:
+  wp:
+    driver: bridge

@@ -1,0 +1,44 @@
+galaxy_info:
+  author: Adnan Hodzic
+  description: Deploy & run Docker Compose project for WordPress instance (3 separate containers running WordPress, Nginx and MySQL) with Let's Encrypt HTTPS encryption
+
+  license: license (GPLv3)
+
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: CentOS
+    versions:
+    - all
+  - name: RedHat
+    versions: 
+    - all 
+
+  galaxy_tags:
+    - development
+    - system
+    - docker
+    - compose
+    - ubuntu
+    - debian
+    - centos
+    - redhat
+    - rhel
+    - wordpress
+    - nginx
+    - mariadb
+    - mysql
+    - container
+    - dockerized
+    - containzerized
+    - project
+    - ec2
+    - aws
+    - automation
+    - letsencrypt

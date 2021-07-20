@@ -1,0 +1,330 @@
+# Ce fichier viminfo a été généré par Vim 7.4.
+# Vous pouvez l'éditer, mais soyez prudent.
+
+# 'encoding' dans lequel ce fichier a été écrit
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~H
+# Dernier motif de recherche  :
+~MSle0~/\<name\>
+
+# Dernières chaînes de substitution :
+$
+
+# Historique ligne de commande (chronologie décroissante) :
+:q
+:wq
+:q!
+:!q
+
+# Historique chaîne de recherche (chronologie décroissante) :
+? \<name\>
+
+# Historique expression (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Registres :
+""0	CHAR	0
+	 
+"-	CHAR	0
+	 
+
+# Marques dans le fichier :
+'0  1  0  ~/webapp/files/secrets
+'1  12  4  ~/webapp/wordpress.yml
+'2  1  0  ~/webapp/hosts.yml
+'3  20  6  ~/webapp/deploy.yml
+'4  6  4  ~/webapp/deploy3_securite.yml
+'5  1  0  ~/webapp/deploy2_template.yml
+'6  9  4  ~/webapp/deploy1.yml
+'7  1  0  ~/webapp/ansible.cfg
+'8  1  0  ~/test.txt
+'9  5  4  ~/mytest.yml
+
+# Liste de sauts (le plus récent en premier) :
+-'  1  0  ~/webapp/files/secrets
+-'  12  4  ~/webapp/wordpress.yml
+-'  1  0  ~/webapp/hosts.yml
+-'  20  6  ~/webapp/deploy.yml
+-'  6  4  ~/webapp/deploy3_securite.yml
+-'  1  0  ~/webapp/deploy2_template.yml
+-'  9  4  ~/webapp/deploy1.yml
+-'  1  0  ~/webapp/ansible.cfg
+-'  1  0  ~/test.txt
+-'  5  4  ~/mytest.yml
+-'  7  0  ~/mytest
+-'  1  0  ~/mytest
+-'  4  4  ~/hosts.yml
+-'  7  0  ~/hosts.ini
+-'  1  0  ~/hosts
+-'  4  0  ~/.ssh/known_hosts
+-'  1  0  ~/.ssh/known_hosts
+-'  2  77  ~/webapp/roles/requirements.yml
+-'  1  0  ~/webapp/roles/requirements.yml
+-'  2  0  ~/webapp/roles/requirements.txt
+-'  2  0  ~/webapp/wordpress.yml
+-'  1  0  ~/webapp/wordpress.yml
+-'  1  0  ~/webapp/roles/requirements.txt
+-'  3  47  ~/webapp/group_vars/prod.yml
+-'  2  5  ~/webapp/files/secrets/credentials.yml
+-'  1  0  ~/webapp/files/secrets/credentials.yml
+-'  6  0  ~/webapp/files/secrets/credentials.yml
+-'  1  0  ~/webapp/deploy3_securite.yml
+-'  29  10  ~/webapp/deploy2_template.yml
+-'  9  7  ~/webapp/hosts.yml
+-'  5  3  ~/webapp/deploy1.yml
+-'  1  0  ~/deploy1.yml
+-'  1  4  ~/webapp/deploy1.yml
+-'  20  15  ~/webapp/deploy2_templating.yml
+-'  1  0  ~/webapp/deploy2_templating.yml
+-'  9  6  ~/webapp/deploy.yml
+-'  1  102  ~/templates/index.html.j2
+-'  2  21  ~/ansible.cfg
+-'  1  0  ~/ansible.cfg
+-'  14  5  ~/webapp/deploy.yml
+-'  12  5  ~/webapp/deploy.yml
+-'  13  4  ~/webapp/deploy.yml
+-'  6  4  ~/webapp/deploy.yml
+-'  19  6  ~/webapp/deploy.yml
+-'  21  7  ~/webapp/deploy.yml
+-'  4  2  ~/webapp/deploy.yml
+-'  1  0  ~/webapp/deploy.yml
+-'  27  11  ~/webapp/deploy.yml
+-'  35  16  ~/webapp/deploy.yml
+-'  1  0  ~/webapp/group_vars/prod.yml
+-'  13  4  ~/hosts.yml
+-'  12  4  ~/hosts.yml
+-'  1  0  ~/hosts.yml
+-'  13  0  ~/hosts.ini
+-'  11  0  ~/hosts.ini
+-'  1  0  ~/hosts.ini
+-'  1  0  ~/mytest.yml
+-'  4  8  ~/mytest.ym
+-'  1  0  ~/mytest.ym
+-'  3  12  ~/mytest
+-'  3  13  ~/hosts
+-'  4  8  ~/mytest.ym
+-'  1  0  ~/mytest.ym
+-'  1  0  ~/hosts
+-'  4  0  ~/.ssh/known_hosts
+-'  1  0  ~/.ssh/known_hosts
+-'  2  77  ~/webapp/roles/requirements.yml
+-'  1  0  ~/webapp/roles/requirements.yml
+-'  2  0  ~/webapp/roles/requirements.txt
+-'  1  0  ~/webapp/roles/requirements.txt
+-'  3  47  ~/webapp/group_vars/prod.yml
+-'  2  5  ~/webapp/files/secrets/credentials.yml
+-'  1  0  ~/webapp/files/secrets/credentials.yml
+-'  6  0  ~/webapp/files/secrets/credentials.yml
+-'  7  0  ~/mytest
+-'  1  0  ~/mytest
+-'  4  4  ~/hosts.yml
+-'  7  0  ~/hosts.ini
+-'  1  0  ~/hosts
+-'  4  0  ~/.ssh/known_hosts
+-'  1  0  ~/.ssh/known_hosts
+-'  2  77  ~/webapp/roles/requirements.yml
+-'  1  0  ~/webapp/roles/requirements.yml
+-'  2  0  ~/webapp/roles/requirements.txt
+-'  1  0  ~/test.txt
+-'  5  4  ~/mytest.yml
+-'  9  4  ~/webapp/deploy1.yml
+-'  1  0  ~/webapp/deploy2_template.yml
+-'  9  4  ~/webapp/deploy1.yml
+-'  6  4  ~/webapp/deploy3_securite.yml
+-'  1  0  ~/webapp/deploy2_template.yml
+-'  20  6  ~/webapp/deploy.yml
+-'  1  0  ~/webapp/hosts.yml
+-'  20  6  ~/webapp/deploy.yml
+-'  12  4  ~/webapp/wordpress.yml
+-'  1  0  ~/webapp/hosts.yml
+-'  20  6  ~/webapp/deploy.yml
+-'  6  4  ~/webapp/deploy3_securite.yml
+
+# Historique des marques dans les fichiers (les plus récentes en premier) :
+
+> ~/webapp/wordpress.yml
+	"	12	4
+	^	12	52
+	.	12	51
+	+	1	3
+	+	11	8
+	+	12	51
+
+> ~/webapp/hosts.yml
+	"	1	0
+	^	9	4
+	.	3	3
+	+	9	37
+	+	1	0
+	+	10	0
+	+	3	3
+
+> ~/webapp/deploy.yml
+	"	20	6
+	^	9	5
+	.	14	5
+	+	1	3
+	+	154	607
+	+	35	17
+	+	32	0
+	+	31	31
+	+	27	11
+	+	17	21
+	+	21	12
+	+	4	2
+	+	15	2
+	+	4	13
+	+	11	30
+	+	14	24
+	+	6	30
+	+	7	0
+	+	13	4
+	+	14	5
+	+	11	4
+	+	12	5
+	+	22	0
+	+	18	9
+	+	11	4
+	+	12	5
+	+	13	4
+	+	14	5
+
+> ~/webapp/deploy3_securite.yml
+	"	6	4
+	^	6	35
+	.	6	34
+	+	31	71
+	+	6	34
+
+> ~/webapp/deploy2_template.yml
+	"	1	0
+	^	29	71
+	.	29	71
+	+	27	15
+	+	7	26
+	+	14	0
+	+	10	22
+	+	12	12
+	+	17	11
+	+	22	2
+	+	22	0
+	+	18	4
+	+	22	4
+	+	23	6
+	+	24	7
+	+	25	7
+	+	26	7
+	+	27	19
+	+	32	0
+	+	21	35
+	+	29	71
+
+> ~/webapp/deploy1.yml
+	"	9	4
+	^	9	2
+	.	5	2
+	+	1	15
+	+	1	0
+	+	1	0
+	+	19	15
+	+	5	2
+
+> ~/webapp/ansible.cfg
+	"	1	0
+
+> ~/test.txt
+	"	1	0
+
+> ~/mytest.yml
+	"	5	4
+	^	5	9
+	.	5	1
+	+	1	38
+	+	5	1
+
+> ~/mytest
+	"	7	0
+
+> ~/hosts.yml
+	"	4	4
+	^	4	43
+	.	4	42
+	+	1	4
+	+	4	54
+	+	7	30
+	+	9	30
+	+	13	23
+	+	12	28
+	+	5	0
+	+	6	8
+	+	8	20
+	+	10	20
+	+	4	42
+
+> ~/hosts.ini
+	"	7	0
+	^	7	10
+	.	7	9
+	+	12	0
+	+	1	10
+	+	3	52
+	+	5	6
+	+	9	11
+	+	11	13
+	+	10	23
+	+	3	48
+	+	7	9
+
+> ~/hosts
+	"	1	0
+
+> ~/.ssh/known_hosts
+	"	4	0
+	^	4	0
+	.	2	0
+	+	2	0
+
+> ~/webapp/roles/requirements.yml
+	"	2	77
+	^	2	78
+	.	2	6
+	+	2	70
+	+	1	3
+	+	2	6
+
+> ~/webapp/roles/requirements.txt
+	"	2	0
+	^	2	73
+	.	2	52
+	+	2	52
+
+> ~/webapp/group_vars/prod.yml
+	"	3	47
+	^	3	48
+	.	3	43
+	+	3	17
+	+	2	20
+	+	3	43
+
+> ~/webapp/files/secrets/credentials.yml
+	"	2	5
+	^	2	6
+	.	2	5
+	+	2	5
+
+> ~/deploy1.yml
+	"	1	0
+
+> ~/webapp/deploy2_templating.yml
+	"	20	15
+	^	20	16
+	.	20	15
+	+	39	15
+	+	1	38
+	+	20	15
