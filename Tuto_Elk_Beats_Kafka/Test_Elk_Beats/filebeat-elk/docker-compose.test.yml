@@ -74,23 +74,7 @@ services:
             - /:/hostfs:ro
         networks: ['elk']
         depends_on: ['elasticsearch', 'kibana']
-
-        packetbeat:
-        image: docker.elastic.co/beats/packetbeat:$ELK_VERSION
-        container_name: packetbeat
-        cap_add: ['NET_RAW', 'NET_ADMIN']
-        command: --strict.perms=false -e
-        volumes:
-            - ./packetbeat/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml
-        depends_on: ['elasticsearch', 'kibana']
-        healthcheck:
-            test: packetbeat test config
-            interval: 30s
-            timeout: 15s
-            retries: 5
-        networks:
-            - elk
-    
+        
     packetbeat:
         image: docker.elastic.co/beats/packetbeat:$ELK_VERSION
         container_name: packetbeat

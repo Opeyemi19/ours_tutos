@@ -1,0 +1,38 @@
+version: "3"
+
+networks:
+  loki:
+    driver: bridge
+
+volumes:
+  grafana-storage:
+
+services:
+  loki:
+    container_name: "grafana-loki"
+    image: grafana/loki:1.5.0
+    expose:
+      - "3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    restart: always
+    networks:
+      - loki
+
+  promtail:
+    container_name: "grafana-promtail"
+    image: grafana/promtail:1.5.0
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    networks:
+      - loki
+
+  grafana:
+    container_name: "grafana"
+    image: grafana/grafana:master
+    ports:
+      - "3000:3000"
+    networks:
+      - loki
+    volumes:
+      - grafana-storage:/var/lib/grafana

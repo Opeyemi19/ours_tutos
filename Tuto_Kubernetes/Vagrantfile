@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+  servers=[
+   {
+      :hostname => "mykube",
+      :box => "mrvantage/centos7-minikube",
+      :ip => "192.168.5.16",
+      :ssh_port => '2216'
+   }
+  ]
+
+  servers.each do |machine|
+
+    config.vm.define machine[:hostname] do |node|
+      node.vm.box = machine[:box]
+      node.vm.hostname = machine[:hostname]
+
+      node.vm.network :private_network, ip: machine[:ip]
+     # node.vm.network :public_network, ip: machine[:ip]
+      node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
+
+      node.vm.provider :virtualbox do |v|
+        v.customize ["modifyvm", :id, "--memory", 3072]
+        v.customize ["modifyvm", :id, "--name", machine[:hostname]]
+	      v.customize ["modifyvm", :id, "--cpus", "2"]
+      end
+    end
+  end
+end
